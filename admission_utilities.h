@@ -1,5 +1,5 @@
-#ifndef grading_utilities.h
-#define grading_utilities.h
+#ifndef admission_utilities.h
+#define admission_utilities.h
 
 #include <iostream>
 #include <string>
