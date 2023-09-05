@@ -15,7 +15,7 @@ having to explicitly access the specific class method to get the final score.
 #include <string>
 #include <vector>
 
-#include <grading_utilities.h>
+#include "grading_utilities.h"
 
 // Driver code
 int main() {
