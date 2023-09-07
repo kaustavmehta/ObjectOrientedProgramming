@@ -21,8 +21,7 @@ class Extracurricular {
 
         // Constructor for the class using a member initializer list for the variables.
         // We pass a reference to each string instead of making copies of the string every time.
-        Extracurricular(const std::string& _title, const std::string& _description, int _year)
-            : title(_title), description(_description), year(_year) {}
+        Extracurricular(const std::string& _title, const std::string& _description, int _year);
 };
 
 class SubjectGrade {
@@ -37,8 +36,7 @@ class SubjectGrade {
         std::string subject;
         double grade;
 
-        SubjectGrade(const std::string& _subject, double _grade)
-            : subject(_subject), grade(_grade) {}
+        SubjectGrade(const std::string& _subject, double _grade);
 };
 
 class Applicant {
@@ -74,107 +72,40 @@ class Applicant {
         // duplication in memory.
         Applicant(const std::string& _name, int _age, int _dob, const std::string& _email,
                 const std::vector<Extracurricular>& _extracurriculars,
-                const std::vector<SubjectGrade>& _subjectGrades, int _satScore)
-            : name(_name), age(_age), dob(_dob), email(_email), extracurriculars(_extracurriculars),
-            subjectGrades(_subjectGrades), satScore(_satScore) {}
-
+                const std::vector<SubjectGrade>& _subjectGrades, int _satScore);
         // Getter methods
-        std::string getName() const {
-            return name;
-        }
+        std::string getName() const {};
 
-        int getAge() const {
-            return age;
-        }
+        int getAge() const {};
 
-        int getDOB() const {
-            return dob;
-        }
+        int getDOB() const {};
 
-        std::string getEmail() const {
-            return email;
-        }
+        std::string getEmail() const {};
 
-        std::vector<Extracurricular> getExtracurriculars() const {
-            return extracurriculars;
-        }
+        std::vector<Extracurricular> getExtracurriculars() const {};
 
-        std::vector<SubjectGrade> getSubjectGrades() const {
-            return subjectGrades;
-        }
+        std::vector<SubjectGrade> getSubjectGrades() const {};
 
-        int getSATScore() const {
-            return satScore;
-        }
+        int getSATScore() const {};
 
         // Setter methods
-        void setName(const std::string& _name) {
-            name = _name;
-        }
+        void setName(const std::string& _name) {};
 
-        void setAge(int _age) {
-            // TODO: Validation for age being a plausible value for a prospective university applicant
-            age = _age;
-        }
+        void setAge(int _age) {};
 
-        void setDOB(int _dob){
-            // TODO: Validation for a valid DOB format
-            // (split by [0:2] for date, [2:4] for month and [4:] for year)
-            dob = _dob;
-        }
+        void setDOB(int _dob){};
 
-        void setEmail(const std::string& _email) {
-            // TODO: Validation that the email address is valid. Wouldn't want to attempt it
-            // given how I've seen how scary the regex expression to validate an email looks like.
-            email = _email;
-        }
+        void setEmail(const std::string& _email) {};
 
-        void setExtracurriculars(const std::vector<Extracurricular>& _extracurriculars) {
-            // TODO: Validation that we don't exceed an X number of extracurricular activities.
-            // Further validation that the year given ought to be validated in the Extracurricular class.
-            extracurriculars = _extracurriculars;
-        }
+        void setExtracurriculars(const std::vector<Extracurricular>& _extracurriculars) {};
 
-        void setSubjectGrades(const std::vector<SubjectGrade>& _subjectGrades) {
-            // TODO: Validation for a minimum of (4?) subjects and a maximum X number of subjects.
-            // Further validation on the grades achieved ought to be done. Currently, the function
-            // associated with the SubjectGrade class will happily take any double value.
-            subjectGrades = _subjectGrades;
-        }
+        void setSubjectGrades(const std::vector<SubjectGrade>& _subjectGrades) {};
 
-        void setSATScore(int _satScore) {
-            // TODO: If the applicant hasn't done SAT, maybe a value of -1 might be good to indicate
-            // this. Further, an upper maximum validation of 1400 should be done.
-            satScore = _satScore;
-        }       
+        void setSATScore(int _satScore) {};       
 
         // Method to display applicant's information (basically reads and prints the entire
         // data structure that the Applicant class encapsulates).
-        void displayInfo() const {
-            std::cout << "Name: " << name << std::endl;
-            std::cout << "Age: " << age << std::endl;
-            std::cout << "Date of Birth: " << dob << std::endl;
-            std::cout << "Email: " << email << std::endl;
-            
-            std::cout << "Extracurriculars: " << std::endl;
-            // Loop to iterate over every Extracurricular activity in the extracurriculars vector
-            // and prints the encapsulating title, description and year.
-            for (const Extracurricular& activity : extracurriculars) {
-                std::cout << "- Title: " << activity.title << std::endl;
-                std::cout << "  Description: " << activity.description << std::endl;
-                std::cout << "  Year: " << activity.year << std::endl;
-            }
-            
-            std::cout << "Subject Grades: ";
-            // Loop to iterate over every SubjectGrade object in the subjectGrades vector and
-            // and prints the encapsulating subject name and grade.
-            for (const SubjectGrade& subjectGrade : subjectGrades) {
-                std::cout << subjectGrade.subject << " (" << subjectGrade.grade << "%), ";
-            }
-
-            std::cout << std::endl;
-            std::cout << "SAT Score: " << satScore << " /1400" << std::endl;
-        }
+        void displayInfo() const {};
 };
 
 #endif
