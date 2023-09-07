@@ -1,5 +1,5 @@
-#ifndef admission_utilities.h
-#define admission_utilities.h
+#ifndef ADMISSION_UTILITIES_H_
+#define ADMISSION_UTILITIES_H_
 
 #include <iostream>
 #include <string>
@@ -73,39 +73,40 @@ class Applicant {
         Applicant(const std::string& _name, int _age, int _dob, const std::string& _email,
                 const std::vector<Extracurricular>& _extracurriculars,
                 const std::vector<SubjectGrade>& _subjectGrades, int _satScore);
+        
         // Getter methods
-        std::string getName() const {};
+        std::string getName() const;
 
-        int getAge() const {};
+        int getAge() const;
 
-        int getDOB() const {};
+        int getDOB() const;
 
-        std::string getEmail() const {};
+        std::string getEmail() const;
 
-        std::vector<Extracurricular> getExtracurriculars() const {};
+        std::vector<Extracurricular> getExtracurriculars() const;
 
-        std::vector<SubjectGrade> getSubjectGrades() const {};
+        std::vector<SubjectGrade> getSubjectGrades() const;
 
-        int getSATScore() const {};
+        int getSATScore() const;
 
         // Setter methods
-        void setName(const std::string& _name) {};
+        void setName(const std::string& _name);
 
-        void setAge(int _age) {};
+        void setAge(int _age);
 
-        void setDOB(int _dob){};
+        void setDOB(int _dob);
 
-        void setEmail(const std::string& _email) {};
+        void setEmail(const std::string& _email);
 
-        void setExtracurriculars(const std::vector<Extracurricular>& _extracurriculars) {};
+        void setExtracurriculars(const std::vector<Extracurricular>& _extracurriculars);
 
-        void setSubjectGrades(const std::vector<SubjectGrade>& _subjectGrades) {};
+        void setSubjectGrades(const std::vector<SubjectGrade>& _subjectGrades);
 
-        void setSATScore(int _satScore) {};       
+        void setSATScore(int _satScore);       
 
         // Method to display applicant's information (basically reads and prints the entire
         // data structure that the Applicant class encapsulates).
-        void displayInfo() const {};
+        void displayInfo() const;
 };
 
 #endif
