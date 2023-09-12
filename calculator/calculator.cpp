@@ -131,7 +131,7 @@ double Calculator::natlog(){
 double Calculator::logarithm(){
     double num;
 
-    std::cout << "Enter a number: (non-zero and non-negative)";
+    std::cout << "Enter a number (non-zero and non-negative): ";
     std::cin >> num;
     
     if (num > 0){
