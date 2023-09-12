@@ -96,12 +96,14 @@ int main() {
             std::cout << "  / : divide (divider must be non-zero)" << std::endl;
             std::cout << "  % : modulus (divider must be non-zero)" << std::endl;
             std::cout << "  e : raise a number to an exponent" << std::endl;
-
+            std::cout << std::endl;
             std::cout << "### Functions on ONE number: ###" << std::endl;
             std::cout << "  ^ : square the number" << std::endl;
             std::cout << "  r : square root of a non-negative number" << std::endl;
             std::cout << "  l : log-10 of a non-zero, non-negative number" << std::endl;
             std::cout << "  n : log-e of a non-zero, non-negative number" << std::endl;
+            std::cout << std::endl;
+            std::cout << "  h : output this help" << std::endl;
             break;
         default:
             std::cout << "Invalid operation!" << std::endl;
