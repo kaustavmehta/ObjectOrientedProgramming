@@ -32,82 +32,89 @@ int main() {
     
     Calculator calc; // Instantiate Calculator object
 
-    std::cout << "Enter an operation (+, -, *, /, %, ^, r, e, l, n, h(help)): ";
-    
-    std::cin >> operation; // Accept user input
+    // We try executing the below code block
+    try {
+        std::cout << "Enter an operation (+, -, *, /, %, ^, r, e, l, n, h(help)): ";
+        std::cin >> operation; // Accept user input
 
-    switch (operation) {
-        // ADD
-        case '+':
-            result = calc.add();
-            std::cout << "Result (addition): " << result << std::endl;
-            break;
-        // SUBTRACT
-        case '-':
-            result = calc.subtract();
-            std::cout << "Result (subtraction): " << result << std::endl;
-            break;
-        // MULTIPLY
-        case '*':
-            result = calc.multiply();
-            std::cout << "Result (multiplication): " << result << std::endl;
-            break;
-        // DIVIDE
-        case '/':
-            result = calc.divide();
-            std::cout << "Result (division): " << result << std::endl;
-            break;
-        // MODULUS
-        case '%':
-            result = calc.modulus();
-            std::cout << "Result (modulus): " << result << std::endl;
-            break;
-        // SQUARE
-        case '^':
-            result = calc.square();
-            std::cout << "Result (square): " << result << std::endl;
-            break;
-        // SQUARE ROOT
-        case 'r':
-            result = calc.sqroot();
-            std::cout << "Result (square root): " << result << std::endl;
-            break;
-        // POWER
-        case 'e':
-            result = calc.power();
-            std::cout << "Result (exponent): " << result << std::endl;
-            break;
-        // LOG-10
-        case 'l':
-            result = calc.logarithm();
-            std::cout << "Result (logarithm): " << result << std::endl;
-            break;
-        // LOG-E
-        case 'n':
-            result = calc.natlog();
-            std::cout << "Result (natural logarithm): " << result << std::endl;
-            break;
-        // HELP
-        case 'h':
-            std::cout << "### Functions on TWO numbers: ###" << std::endl;
-            std::cout << "  + : add" << std::endl;
-            std::cout << "  - : subtract" << std::endl;
-            std::cout << "  * : multiply" << std::endl;
-            std::cout << "  / : divide (divider must be non-zero)" << std::endl;
-            std::cout << "  % : modulus (divider must be non-zero)" << std::endl;
-            std::cout << "  e : raise a number to an exponent" << std::endl;
-            std::cout << std::endl;
-            std::cout << "### Functions on ONE number: ###" << std::endl;
-            std::cout << "  ^ : square the number" << std::endl;
-            std::cout << "  r : square root of a non-negative number" << std::endl;
-            std::cout << "  l : log-10 of a non-zero, non-negative number" << std::endl;
-            std::cout << "  n : log-e of a non-zero, non-negative number" << std::endl;
-            std::cout << std::endl;
-            std::cout << "  h : output this help" << std::endl;
-            break;
-        default:
-            std::cout << "Invalid operation!" << std::endl;
-            break;
+        switch (operation) {
+            // ADD
+            case '+':
+                result = calc.add();
+                std::cout << "Result (addition): " << result << std::endl;
+                break;
+            // SUBTRACT
+            case '-':
+                result = calc.subtract();
+                std::cout << "Result (subtraction): " << result << std::endl;
+                break;
+            // MULTIPLY
+            case '*':
+                result = calc.multiply();
+                std::cout << "Result (multiplication): " << result << std::endl;
+                break;
+            // DIVIDE
+            case '/':
+                result = calc.divide();
+                std::cout << "Result (division): " << result << std::endl;
+                break;
+            // MODULUS
+            case '%':
+                result = calc.modulus();
+                std::cout << "Result (modulus): " << result << std::endl;
+                break;
+            // SQUARE
+            case '^':
+                result = calc.square();
+                std::cout << "Result (square): " << result << std::endl;
+                break;
+            // SQUARE ROOT
+            case 'r':
+                result = calc.sqroot();
+                std::cout << "Result (square root): " << result << std::endl;
+                break;
+            // POWER
+            case 'e':
+                result = calc.power();
+                std::cout << "Result (exponent): " << result << std::endl;
+                break;
+            // LOG-10
+            case 'l':
+                result = calc.logarithm();
+                std::cout << "Result (logarithm): " << result << std::endl;
+                break;
+            // LOG-E
+            case 'n':
+                result = calc.natlog();
+                std::cout << "Result (natural logarithm): " << result << std::endl;
+                break;
+            // HELP
+            case 'h':
+                std::cout << "### Functions on TWO numbers: ###" << std::endl;
+                std::cout << "  + : add" << std::endl;
+                std::cout << "  - : subtract" << std::endl;
+                std::cout << "  * : multiply" << std::endl;
+                std::cout << "  / : divide (divider must be non-zero)" << std::endl;
+                std::cout << "  % : modulus (divider must be non-zero)" << std::endl;
+                std::cout << "  e : raise a number to an exponent" << std::endl;
+                std::cout << std::endl;
+                std::cout << "### Functions on ONE number: ###" << std::endl;
+                std::cout << "  ^ : square the number" << std::endl;
+                std::cout << "  r : square root of a non-negative number" << std::endl;
+                std::cout << "  l : log-10 of a non-zero, non-negative number" << std::endl;
+                std::cout << "  n : log-e of a non-zero, non-negative number" << std::endl;
+                std::cout << std::endl;
+                std::cout << "  h : output this help" << std::endl;
+                break;
+            
+            default:
+                // If none of the options match, throw an exception.
+                throw std::invalid_argument("Invalid operation!");
+                break;
+        }
+    // If try block fails, we catch it and throw the respective exception.
+    } catch (const std::exception& e) {
+        std::cerr << "Error: " << e.what() << std::endl;
     }
 
     return 0;

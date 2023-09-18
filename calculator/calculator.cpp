@@ -22,6 +22,8 @@ or would the code just indicate options to the compiler?
 */
 
 #include "calculator.h"
+#include <stdexcept>
+#include <cassert>
 
 // Add two numbers
 double Calculator::add(){
@@ -53,13 +55,14 @@ double Calculator::divide(){
 
     std::cout << "Enter two numbers (dividend, divisor): ";
     std::cin >> num1 >> num2;
-    
-    if (num2 != 0) {
-        return num1 / num2;
-    } else {
-        std::cout << "Error: Division by zero!" << std::endl;
-        return 0;
+
+    assert(num2 != 0); // Check for division by zero
+    // Catch exception where user enters a zero divisor
+    if (num2 == 0){
+        throw std::invalid_argument("Division by zero is not allowed!");
     }
+
+    return num1 / num2;
 };
 
 // Divide two numbers and return remainder, if second number is not zero.
@@ -69,12 +72,13 @@ double Calculator::modulus(){
     std::cout << "Enter two numbers (dividend, divisor): ";
     std::cin >> num1 >> num2;
 
-    if (num2 != 0) {
-        return fmod(num1, num2);
-    } else {
-        std::cout << "Error: Division by zero!" << std::endl;
-        return 0;
+    assert(num2 != 0); // Check for division by zero
+    // Catch exception where user enters a zero divisor
+    if (num2 == 0){
+        throw std::invalid_argument("Division by zero is not allowed!");
     }
+
+    return fmod(num1, num2);
 };
 
 // Square the given number (x^2)
@@ -104,11 +108,10 @@ double Calculator::sqroot(){
     std::cout << "Enter a number: ";
     std::cin >> num;
     
-    if (num >= 0){
-        return sqrt(num);
-    } else {
-        std::cout << "Error: Square root of a negative number!" << std::endl;
-        return 0;
+    assert(num >= 0); // Check for non-negative input to square root
+    // Catch if input number is negative. Throw an exception is true.
+    if (num < 0){
+        throw std::invalid_argument("Square root of a negative number!");
     }
 };
 
@@ -119,12 +122,17 @@ double Calculator::natlog(){
     std::cout << "Enter a number (non-zero and non-negative): ";
     std::cin >> num;
     
-    if (num > 0){
-        return log(num);
-    } else {
-        std::cout << "Error: Logarithm of a non-zero/non-positive number!" << std::endl;
-        return 0;
+    assert(num > 0); // Check for non-zero, non-negative input to logarithm
+    // Catch if input number is zero and throw an exception.
+    if (num == 0){
+        throw std::invalid_argument("Logarithm of zero is not allowed!");
+    } 
+    // Catch if input number is negative and throw an exception.
+    else if (num < 0){
+        throw std::invalid_argument("Logarithm of a negative number is not allowed!");
     }
+
+    return log(num);
 };
 
 // Log-10 of a given non-negative and non-zero number.
@@ -134,10 +142,15 @@ double Calculator::logarithm(){
     std::cout << "Enter a number (non-zero and non-negative): ";
     std::cin >> num;
     
-    if (num > 0){
-        return log10(num);
-    } else {
-        std::cout << "Error: Logarithm of a non-zero/non-positive number!" << std::endl;
-        return 0;
+    assert(num > 0); // Check for non-zero, non-negative input to logarithm
+    // Catch if input number is zero and throw an exception.
+    if (num == 0){
+        throw std::invalid_argument("Logarithm of zero is not allowed!");
+    } 
+    // Catch if input number is negative and throw an exception.
+    else if (num < 0){
+        throw std::invalid_argument("Logarithm of a negative number is not allowed!");
     }
+
+    return log10(num);
 };
