@@ -108,12 +108,12 @@ double Calculator::sqroot(){
     std::cout << "Enter a number: ";
     std::cin >> num;
     
-    assert(num >= 0); // Check for non-negative input to square root
     // Catch if input number is negative. Throw an exception is true.
     if (num < 0){
         throw std::invalid_argument("Square root of a negative number!");
     }
 
+    assert(num >= 0); // Assert that input to square root is non-negative.
     return sqrt(num);
 };
 
