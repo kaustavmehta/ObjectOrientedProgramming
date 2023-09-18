@@ -19,6 +19,5 @@ calculator.o: calculator.cpp
 clean:
 	rm -f main.exe *.o
 
-# Declare a phony target so that make always cleans up
-# upon running make again.
+# Declare a phony target so that make cleans up without a target.
 .PHONY: clean
