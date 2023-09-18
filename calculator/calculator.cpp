@@ -113,6 +113,8 @@ double Calculator::sqroot(){
     if (num < 0){
         throw std::invalid_argument("Square root of a negative number!");
     }
+
+    return sqrt(num);
 };
 
 // Natural log/log-e of a given number.
