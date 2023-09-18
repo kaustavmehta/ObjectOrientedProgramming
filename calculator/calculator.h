@@ -62,6 +62,8 @@ class Calculator {
         // Method to find the base-10 log of a number
         double logarithm();
 
+        // Method to check if input is double
+        bool check(std::string);
 };
 
 #endif
