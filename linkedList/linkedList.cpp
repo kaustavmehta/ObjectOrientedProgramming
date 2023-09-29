@@ -55,10 +55,12 @@ class List {
             std::cout << "Null pointer reached." << std::endl;
         }
 
+        /*
         // Naive copy constructor (incorrect).
         List(const List& copy) {
             head = copy.head; // Copy the pointer to the head node.
         }
+        */
 
 
         List(const List& copy) {
