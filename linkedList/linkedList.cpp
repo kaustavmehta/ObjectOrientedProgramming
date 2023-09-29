@@ -126,10 +126,13 @@ int main() {
     std::cout << "Original List: ";
     test.display();     // Display the list.
 
-    List copyList(test); // Using the naive and incorrect copy constructor
+    //List copyList(test); // Using the naive and incorrect copy constructor
+
+    List copiedList;
+    copiedList = test; // Use overloaded assignment operator to implicitly make a deep copy. 
 
     std::cout << "Copied List: ";
-    copyList.display();
+    copiedList.display();
 
     return 0;
 }
