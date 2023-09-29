@@ -60,6 +60,49 @@ class List {
             head = copy.head; // Copy the pointer to the head node.
         }
 
+
+        List(const List& copy) {
+
+            head = nullptr; // Inititalize the new linked list as empty.
+
+            // Traverse the nodes of the given list.
+            Node* copyCurrent = copy.head;
+            while (copyCurrent) {
+                // Create a new node with the same data.
+                append(copyCurrent->data);
+                // Set the current pointer to the next pointer in the list.
+                copyCurrent = copyCurrent->next;
+            }
+        }
+
+        // Overloaded assignment operator for deep copying.
+        List& operator=(const List& copy) {
+            // Check for self assignment to prevent redundant work.   
+            if (this == &copy){
+                return *this;
+            }
+
+            // Clear the existing list
+            while (head){
+                Node* temp = head;
+                head = head->next;
+                delete temp;
+            }
+
+            // Copy the elements from the given list by traversing across the nodes.
+            Node* copyCurrent = copy.head;
+            while (copyCurrent){
+                // Create new nodes with the same data.
+                append(copyCurrent->data);
+                copyCurrent = copyCurrent->next;
+            }
+
+            // Return a reference to the current list.
+            return *this;
+        
+        };
+
+
         // Destructor to free memory when the list is destroyed.
         ~List() {
 
@@ -80,8 +123,13 @@ int main() {
     test.append(2);
     test.append(1);
 
-    std::cout << "List: ";
+    std::cout << "Original List: ";
     test.display();     // Display the list.
+
+    List copyList(test); // Using the naive and incorrect copy constructor
+
+    std::cout << "Copied List: ";
+    copyList.display();
 
     return 0;
 }
