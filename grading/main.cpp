@@ -13,6 +13,10 @@ having to explicitly access the specific class method to get the final score.
 
 // Updated code to use header information.
 
+// Update 30 September 2023:
+// Updated to use dynamic memory management and pointers to initialize
+// Student objects on the heap.
+
 #include <iostream>
 #include <string>
 #include <vector>
@@ -23,22 +27,30 @@ having to explicitly access the specific class method to get the final score.
 int main() {
 
     // Instantiate an object of Student
-    Student student1("John Doe", 100);
-    student1.addGrade("Math", 90.5);
-    student1.addGrade("Physics", 85.0);
-    student1.addGrade("English", 92.3);
-    student1.displayInfo();
+    // This time we create the objects on the heap using pointers
+    
+    Student* student1 = new Student("John Doe", 100);
+    student1->addGrade("Math", 90.5);
+    student1->addGrade("Physics", 85.0);
+    student1->addGrade("English", 92.3);
+    student1->displayInfo();
 
     // Add a line break between the two outputs.
     std::cout << std::endl;
 
     // Instantiate an object of Student
-    Student student2("Dohn Joe", 101);
-    student2.addGrade("Psychology", 98.2);
-    student2.addGrade("Economics", 92.6);
-    student2.addGrade("Hindi", 87.1);
-    student2.displayInfo();
+    // This time we create the objects on the heap using pointers
+    Student* student2 = new Student("Dohn Joe", 101);
+    student2->addGrade("Psychology", 98.2);
+    student2->addGrade("Economics", 92.6);
+    student2->addGrade("Hindi", 87.1);
+    student2->displayInfo();
 
     std::cout << std::endl;
+    
+    // Release memory from the heap
+    delete student1;
+    delete student2;
+    
     return 0;
 }
