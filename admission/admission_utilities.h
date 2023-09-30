@@ -5,8 +5,8 @@
 #include <string>
 #include <vector>
 
-// Not sure how to implement pointers or dynamic memory management since this program does not have
-// any real logic to it. Since it isn't necessary, I won't use it.
+// Update 30 September 2023:
+// Updated to use pointers and dynamic memory management.
 
 class Extracurricular {
     

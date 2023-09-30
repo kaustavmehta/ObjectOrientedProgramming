@@ -7,6 +7,9 @@
 // and std::vector<Extracurricular>, std::vector<SubjectGrade> types to prevent data
 // duplication in memory.
 
+// Update 30 September 2023:
+// Updated to use pointers and dynamic memory management.
+
 Extracurricular::Extracurricular(const std::string& _title, const std::string& _description, int _year)
             : title(_title), description(_description), year(_year) {}
 
