@@ -10,6 +10,9 @@ different forms of the same logic that is used here, and more time would be spen
 Committee member rather than being a programmer.
 */
 
+// Not sure how to implement pointers or dynamic memory management since this program does not have
+// any real logic to it. Since it isn't necessary, I won't use it.
+
 #include <iostream>
 #include <string>
 #include <vector>

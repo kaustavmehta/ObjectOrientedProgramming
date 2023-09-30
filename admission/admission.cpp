@@ -1,5 +1,8 @@
 #include "admission_utilities.h"
 
+// Not sure how to implement pointers or dynamic memory management since this program does not have
+// any real logic to it. Since it isn't necessary, I won't use it.
+
 // Constructor using a member list initializer. Again, we use reference to the std::string
 // and std::vector<Extracurricular>, std::vector<SubjectGrade> types to prevent data
 // duplication in memory.
