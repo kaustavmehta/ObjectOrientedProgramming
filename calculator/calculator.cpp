@@ -54,6 +54,8 @@ bool Calculator::check(std::string var){
 
 // Add two numbers
 double Calculator::add(){
+
+    double* result = new double;
     std::string num1, num2;
     
     std::cout << "Enter two numbers: ";
@@ -62,11 +64,18 @@ double Calculator::add(){
     assert(check(num1) == 0); // Assert that input is a double
     assert(check(num2) == 0); // Assert that input is a double
     
-    return std::stod(num1) + std::stod(num2); // Convert string to double and return result
+    // Convert string to double and store in result
+    *result = std::stod(num1) + std::stod(num2);
+    result_ = result; // Stores the memory alloc information that can destroyed later.
+    
+    return *result;
+
 }
 
 // Subtract two numbers
 double Calculator::subtract(){
+
+    double* result = new double;
     std::string num1, num2;
     
     std::cout << "Enter two numbers: ";
@@ -75,11 +84,16 @@ double Calculator::subtract(){
     assert(check(num1) == 0); // Assert that input is a double
     assert(check(num2) == 0); // Assert that input is a double
 
-    return std::stod(num1) - std::stod(num2); // Convert string to double and return result
+    *result = std::stod(num1) - std::stod(num2);
+    result_ = result;
+
+    return *result; // Convert string to double and return result
 }
 
 // Multiply two numbers
 double Calculator::multiply(){
+    
+    double* result = new double;
     std::string num1, num2;
 
     std::cout << "Enter two numbers: ";
@@ -88,11 +102,16 @@ double Calculator::multiply(){
     assert(check(num1) == 0); // Assert that input is a double 
     assert(check(num2) == 0); // Assert that input is a double
 
-    return std::stod(num1) * std::stod(num2);
+    *result = std::stod(num1) * std::stod(num2);
+    result_ = result;
+
+    return *result;
 }
 
 // Divide two numbers, if second number is not zero.
 double Calculator::divide(){
+
+    double* result = new double;
     double num1, num2;
 
     std::cout << "Enter two numbers (dividend, divisor): ";
@@ -104,11 +123,16 @@ double Calculator::divide(){
         throw std::invalid_argument("Division by zero is not allowed!");
     }
 
-    return num1 / num2; // Convert string to double and return result
+    *result = num1 / num2; 
+    result_ = result;
+    return *result; // Convert string to double and return result
+
 };
 
 // Divide two numbers and return remainder, if second number is not zero.
 double Calculator::modulus(){
+    
+    double* result = new double;
     std::string num1, num2;
 
     std::cout << "Enter two numbers (dividend, divisor): ";
@@ -122,11 +146,17 @@ double Calculator::modulus(){
         throw std::invalid_argument("Division by zero is not allowed!");
     }
 
-    return fmod(std::stod(num1), std::stod(num2)); // Convert string to double
+    *result = fmod(std::stod(num1), std::stod(num2));
+    result_ = result; 
+    
+    return *result; // Convert string to double
+
 };
 
 // Square the given number (x^2)
 double Calculator::square(){
+
+    double* result = new double;
     std::string num;
     
     std::cout << "Enter a number: ";
@@ -134,11 +164,17 @@ double Calculator::square(){
     
     assert(check(num) == 0); // Assert that input is a double
 
-    return std::stod(num) * std::stod(num); // Convert string to double
+    *result = std::stod(num) * std::stod(num);
+    result_ = result; 
+
+    return *result; // Convert string to double
+
 };
 
 // Given base, exponent, return base^exponent.
 double Calculator::power(){
+
+    double* result = new double;
     std::string num1, num2;
     
     std::cout << "Enter two numbers (base, exponent): ";
@@ -147,11 +183,17 @@ double Calculator::power(){
     assert(check(num1) == 0); // Assert that input is a double
     assert(check(num2) == 0); // Assert that input is a double
 
-    return pow(std::stod(num1), std::stod(num2)); // Convert string to double
+    *result = pow(std::stod(num1), std::stod(num2)); 
+    result_ = result;
+    
+    return *result; // Convert string to double
+
 };
 
 // Square root of a given non-negative number.
 double Calculator::sqroot(){
+
+    double* result = new double;
     std::string num;
 
     std::cout << "Enter a number: ";
@@ -164,11 +206,17 @@ double Calculator::sqroot(){
         throw std::invalid_argument("Square root of a negative number!");
     }
 
-    return sqrt(std::stod(num)); // Convert string to double
+    *result = sqrt(std::stod(num));
+    result_ = result;
+
+    return *result; // Convert string to double
+
 };
 
 // Natural log/log-e of a given number.
 double Calculator::natlog(){
+
+    double* result = new double;
     std::string num;
 
     std::cout << "Enter a number (non-zero and non-negative): ";
@@ -185,11 +233,17 @@ double Calculator::natlog(){
         throw std::invalid_argument("Logarithm of a negative number is not allowed!");
     }
 
-    return log(std::stod(num)); // Convert string to double
+    *result = log(std::stod(num));
+    result_ = result;
+
+    return *result; // Convert string to double
+
 };
 
 // Log-10 of a given non-negative and non-zero number.
 double Calculator::logarithm(){
+    
+    double* result = new double;
     std::string num;
 
     std::cout << "Enter a number (non-zero and non-negative): ";
@@ -206,5 +260,8 @@ double Calculator::logarithm(){
         throw std::invalid_argument("Logarithm of a negative number is not allowed!");
     }
 
-    return log10(std::stod(num)); // Convert string to double
+    *result = log10(std::stod(num));
+    result_ = result;
+
+    return *result; // Convert string to double
 };

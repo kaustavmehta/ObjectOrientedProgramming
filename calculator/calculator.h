@@ -32,6 +32,9 @@ class Calculator {
 
     public:
 
+        // Method to check if input is double
+        bool check(std::string);
+
         // Method to add two numbers
         double add();
 
@@ -62,8 +65,15 @@ class Calculator {
         // Method to find the base-10 log of a number
         double logarithm();
 
-        // Method to check if input is double
-        bool check(std::string);
+        // Destructor for the Calculator class to release memory
+        ~Calculator(){
+            delete result_;
+        };
+
+    private:
+        // We store the result for every function in this variable
+        double* result_;
+
 };
 
 #endif
