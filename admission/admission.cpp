@@ -14,8 +14,8 @@ SubjectGrade::SubjectGrade(const std::string& _subject, double _grade)
             : subject(_subject), grade(_grade) {}
 
 Applicant::Applicant(const std::string& _name, int _age, int _dob, const std::string& _email,
-                const std::vector<Extracurricular>& _extracurriculars,
-                const std::vector<SubjectGrade>& _subjectGrades, int _satScore)
+                const std::vector<Extracurricular*>& _extracurriculars,
+                const std::vector<SubjectGrade*>& _subjectGrades, int _satScore)
             : name(_name), age(_age), dob(_dob), email(_email), extracurriculars(_extracurriculars),
             subjectGrades(_subjectGrades), satScore(_satScore) {}
 
@@ -25,8 +25,8 @@ std::string Applicant::getName() const {return name;}
 int Applicant::getAge() const {return age;}
 int Applicant::getDOB() const {return dob;}
 std::string Applicant::getEmail() const {return email;}
-std::vector<Extracurricular> Applicant::getExtracurriculars() const {return extracurriculars;}
-std::vector<SubjectGrade> Applicant::getSubjectGrades() const {return subjectGrades;}
+std::vector<Extracurricular*> Applicant::getExtracurriculars() const {return extracurriculars;}
+std::vector<SubjectGrade*> Applicant::getSubjectGrades() const {return subjectGrades;}
 int Applicant::getSATScore() const {return satScore;}
 
 // Setter methods
@@ -50,13 +50,13 @@ void Applicant::setEmail(const std::string& _email) {
             email = _email;
 }
 
-void Applicant::setExtracurriculars(const std::vector<Extracurricular>& _extracurriculars) {
+void Applicant::setExtracurriculars(const std::vector<Extracurricular*>& _extracurriculars) {
     // TODO: Validation that we don't exceed an X number of extracurricular activities.
     // Further validation that the year given ought to be validated in the Extracurricular class.
     extracurriculars = _extracurriculars;
 }
 
-void Applicant::setSubjectGrades(const std::vector<SubjectGrade>& _subjectGrades) {
+void Applicant::setSubjectGrades(const std::vector<SubjectGrade*>& _subjectGrades) {
     // TODO: Validation for a minimum of (4?) subjects and a maximum X number of subjects.
     // Further validation on the grades achieved ought to be done. Currently, the function
     // associated with the SubjectGrade class will happily take any double value.
@@ -80,17 +80,18 @@ void Applicant::displayInfo() const {
     std::cout << "Extracurriculars: " << std::endl;
     // Loop to iterate over every Extracurricular activity in the extracurriculars vector
     // and prints the encapsulating title, description and year.
-    for (const Extracurricular& activity : extracurriculars) {
-        std::cout << "- Title: " << activity.title << std::endl;
-        std::cout << "  Description: " << activity.description << std::endl;
-        std::cout << "  Year: " << activity.year << std::endl;
+    
+    for (const Extracurricular* activity : extracurriculars) {
+        std::cout << "- Title: " << activity->title << std::endl;
+        std::cout << "  Description: " << activity->description << std::endl;
+        std::cout << "  Year: " << activity->year << std::endl;
     }
     
     std::cout << "Subject Grades: ";
     // Loop to iterate over every SubjectGrade object in the subjectGrades vector and
     // and prints the encapsulating subject name and grade.
-    for (const SubjectGrade& subjectGrade : subjectGrades) {
-        std::cout << subjectGrade.subject << " (" << subjectGrade.grade << "%), ";
+    for (const SubjectGrade* subjectGrade : subjectGrades) {
+        std::cout << subjectGrade->subject << " (" << subjectGrade->grade << "%), ";
     }
 
     std::cout << std::endl;

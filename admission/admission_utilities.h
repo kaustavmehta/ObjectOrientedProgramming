@@ -25,6 +25,10 @@ class Extracurricular {
         // Constructor for the class using a member initializer list for the variables.
         // We pass a reference to each string instead of making copies of the string every time.
         Extracurricular(const std::string& _title, const std::string& _description, int _year);
+
+        ~Extracurricular(){
+            // Empty template destructor for future use.
+        }
 };
 
 class SubjectGrade {
@@ -40,6 +44,11 @@ class SubjectGrade {
         double grade;
 
         SubjectGrade(const std::string& _subject, double _grade);
+
+    ~SubjectGrade(){
+        // Empty destructor template for future use.
+    }
+
 };
 
 class Applicant {
@@ -66,17 +75,30 @@ class Applicant {
         int satScore;
         std::string name;
         std::string email;
-        std::vector<Extracurricular> extracurriculars;
-        std::vector<SubjectGrade> subjectGrades;
+        std::vector<Extracurricular*> extracurriculars; // Pointer
+        std::vector<SubjectGrade*> subjectGrades; // Pointer
 
     public:
         // Constructor using a member list initializer. Again, we use reference to the std::string
         // and std::vector<Extracurricular>, std::vector<SubjectGrade> types to prevent data
         // duplication in memory.
         Applicant(const std::string& _name, int _age, int _dob, const std::string& _email,
-                const std::vector<Extracurricular>& _extracurriculars,
-                const std::vector<SubjectGrade>& _subjectGrades, int _satScore);
+                const std::vector<Extracurricular*>& _extracurriculars,
+                const std::vector<SubjectGrade*>& _subjectGrades, int _satScore);
         
+        // Destructor
+        ~Applicant(){
+            // Go over every object in the extracurriculars vector
+            for (Extracurricular* extracurricular : extracurriculars){
+                delete extracurricular;
+            }
+            
+            // Go over every object in the extracurriculars vector
+            for (SubjectGrade* subjectgrade : subjectGrades){
+                delete subjectgrade;
+            }
+        }
+
         // Getter methods
         std::string getName() const;
 
@@ -86,9 +108,9 @@ class Applicant {
 
         std::string getEmail() const;
 
-        std::vector<Extracurricular> getExtracurriculars() const;
+        std::vector<Extracurricular*> getExtracurriculars() const;
 
-        std::vector<SubjectGrade> getSubjectGrades() const;
+        std::vector<SubjectGrade*> getSubjectGrades() const;
 
         int getSATScore() const;
 
@@ -101,9 +123,9 @@ class Applicant {
 
         void setEmail(const std::string& _email);
 
-        void setExtracurriculars(const std::vector<Extracurricular>& _extracurriculars);
+        void setExtracurriculars(const std::vector<Extracurricular*>& _extracurriculars);
 
-        void setSubjectGrades(const std::vector<SubjectGrade>& _subjectGrades);
+        void setSubjectGrades(const std::vector<SubjectGrade*>& _subjectGrades);
 
         void setSATScore(int _satScore);       
 
