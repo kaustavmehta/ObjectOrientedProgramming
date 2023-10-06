@@ -1,0 +1,30 @@
+# Makefile
+
+# Compiler
+CXX = g++
+
+# Compiler flags
+CXXFLAGS = -std=c++11 -Wall -Wextra
+
+# Source files
+SRCS = main.cpp Vehicle.cpp Car.cpp
+
+# Object files
+OBJS = $(SRCS:.cpp=.o)
+
+# Binary name
+TARGET = car.exe
+
+# Default target
+all: $(TARGET)
+
+$(TARGET): $(OBJS)
+	$(CXX) $(CXXFLAGS) -o $@ $(OBJS)
+
+# Compile source files to object files
+%.o: %.cpp
+	$(CXX) $(CXXFLAGS) -c $< -o $@
+
+# Clean up
+clean:
+	rm -f $(OBJS) $(TARGET)
